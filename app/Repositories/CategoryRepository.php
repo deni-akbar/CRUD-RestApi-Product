@@ -16,8 +16,8 @@ class CategoryRepository implements CategoryInterface
     public function getAll()
     {
         try {
-            $categorys = Category::latest()->paginate(20);
-            return $this->success("All Categorys", $categorys);
+            $category = Category::latest()->paginate(20);
+            return $this->success("All Categorys", $category);
         } catch(\Exception $e) {
             return $this->error($e->getMessage(), $e->getCode());
         }

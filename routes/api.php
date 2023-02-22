@@ -21,3 +21,10 @@ use App\Http\Controllers\Api\ImageController;
 
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
+Route::controller(ImageController::class)->group(function () {
+    Route::get('/images', 'index');
+    Route::get('/images/{id}', 'show');
+    Route::post('/images/{id}', 'update');
+    Route::post('/images', 'store');
+});
+Route::resource('category_products', CategoryProductController::class);
