@@ -53,11 +53,10 @@ class ProductRepository implements ProductInterface
             }else{
                 $product->create($request->all());
             }
-            // Save the product
-            $product->save();
 
             DB::commit();
-            return $this->success($id ? "Product updated" : "Product created", $product, $id ? 200 : 201);
+
+            return $this->success(($id ? "Product updated" : "Product created"), $product,( $id ? 200 : 201));
         } catch(\Exception $e) {
             DB::rollBack();
             return $this->error($e->getMessage(), $e->getCode());

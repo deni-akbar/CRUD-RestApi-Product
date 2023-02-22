@@ -18,7 +18,7 @@ class CategoryRepository implements CategoryInterface
         try {
             $category = Category::latest()->paginate(20);
             return $this->success("All Categorys", $category);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $this->error($e->getMessage(), $e->getCode());
         }
     }
@@ -27,12 +27,12 @@ class CategoryRepository implements CategoryInterface
     {
         try {
             $category = Category::find($id);
-            
+
             // Check the category
-            if(!$category) return $this->error("No category with ID $id", 404);
+            if (!$category) return $this->error("No category with ID $id", 404);
 
             return $this->success("Category Detail", $category);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $this->error($e->getMessage(), $e->getCode());
         }
     }
@@ -46,20 +46,17 @@ class CategoryRepository implements CategoryInterface
             // Else create the new one.
             $category = $id ? Category::find($id) : new Category;
 
-            if($id && !$category) return $this->error("No category with ID $id", 404);
+            if ($id && !$category) return $this->error("No category with ID $id", 404);
 
-            if($id){
+            if ($id) {
                 $category->update($request->all());
-            }else{
+            } else {
                 $category->create($request->all());
             }
 
             DB::commit();
-            return $this->success(
-                $id ? "Category updated"
-                    : "Category created",
-                $category, $id ? 200 : 201);
-        } catch(\Exception $e) {
+            return $this->success(($id ? "Category updated" : "Category created"), $category, ($id ? 200 : 201 ));
+        } catch (\Exception $e) {
             DB::rollBack();
             return $this->error($e->getMessage(), $e->getCode());
         }
@@ -72,14 +69,14 @@ class CategoryRepository implements CategoryInterface
             $category = Category::find($id);
 
             // Check the category
-            if(!$category) return $this->error("No category with ID $id", 404);
+            if (!$category) return $this->error("No category with ID $id", 404);
 
             // Delete the category
             $category->delete();
 
             DB::commit();
             return $this->success("Category deleted", $category);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
             return $this->error($e->getMessage(), $e->getCode());
         }

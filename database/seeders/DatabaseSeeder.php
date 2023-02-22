@@ -5,6 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Image;
+use App\Models\CategoryProduct;
+use App\Models\ProductImage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +24,18 @@ class DatabaseSeeder extends Seeder
         ]);
         Category::create([
             'name' => 'Drink',
+        ]);
+        Image::create([
+            'name' => 'Image 1',
+            'file' => 'https://images.pexels.com/photos/6195084/pexels-photo-6195084.jpeg',
+        ]);
+        CategoryProduct::create([
+            'product_id' =>1,
+            'category_id' => 1,
+        ]);
+        ProductImage::create([
+            'product_id' =>1,
+            'image_id' => 1,
         ]);
     }
 }
