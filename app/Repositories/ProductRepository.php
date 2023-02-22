@@ -48,17 +48,16 @@ class ProductRepository implements ProductInterface
 
             if($id && !$product) return $this->error("No product with ID $id", 404);
 
-            $product->name = $request->name;
-            $product->description = $request->description;
-
+            if($id){
+                $product->update($request->all());
+            }else{
+                $product->create($request->all());
+            }
             // Save the product
             $product->save();
 
             DB::commit();
-            return $this->success(
-                $id ? "Product updated"
-                    : "Product created",
-                $product, $id ? 200 : 201);
+            return $this->success($id ? "Product updated" : "Product created", $product, $id ? 200 : 201);
         } catch(\Exception $e) {
             DB::rollBack();
             return $this->error($e->getMessage(), $e->getCode());

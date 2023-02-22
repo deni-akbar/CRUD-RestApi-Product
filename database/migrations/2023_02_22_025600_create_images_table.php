@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('file');
-            $table->boolean('enable');
+            $table->boolean('enable')->default(1);
             $table->timestamps();
         });
     }

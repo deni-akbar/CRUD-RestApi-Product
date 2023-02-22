@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->smallInteger('enable')->default(1);
+            $table->boolean('enable')->default(1);
             $table->timestamps();
         });
     }

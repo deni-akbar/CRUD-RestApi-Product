@@ -18,11 +18,9 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'name' => 'Milk',
             'description' => 'This drink for kids is so quick and easy and I have to admit that I was shocked by how good it is. I don’t regularly drink milk on its own but this makes me kind of want to. (Same with my other Flavored Milks.)',
-            'enable' => true,
         ]);
         Category::create([
             'name' => 'Drink',
-            'enable' => true,
         ]);
     }
 }
