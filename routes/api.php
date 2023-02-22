@@ -28,3 +28,4 @@ Route::controller(ImageController::class)->group(function () {
     Route::post('/images', 'store');
 });
 Route::resource('category_products', CategoryProductController::class);
+Route::resource('product_images', ProductImageController::class);
