@@ -1,5 +1,5 @@
 # FRAMEWORK NAME: LARAVEL
-# VERSION : 8
+  VERSION : 8
 
 # INSTRUCTIONS
 1. Rename .env.example menjadi .env
