@@ -1,3 +1,6 @@
+# FRAMEWORK NAME: LARAVEL
+# VERSION : 8
+
 # INSTRUCTIONS
 1. Rename .env.example menjadi .env
 2. Buat Database dengan nama db-surplus atau dapat disesuaikan dengan DB_DATABASE pada file .env
